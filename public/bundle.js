@@ -3528,7 +3528,7 @@ var showError = exports.showError = function showError(errorMessage) {
 function fetchPosts(subreddit) {
   return function (dispatch) {
     dispatch(requestPosts());
-    _superagent2.default.get('/api/v1/reddit/subreddit/' + subreddit).end(function (err, res) {
+    _superagent2.default.get('/api/v1/satellites/25544').end(function (err, res) {
       if (err) {
         dispatch(showError(err.message));
         return;
@@ -11032,11 +11032,11 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Post = function Post(_ref) {
-  var title = _ref.title;
+  var name = _ref.name;
   return _react2.default.createElement(
     'div',
     null,
-    title
+    name
   );
 };
 
@@ -11081,7 +11081,7 @@ var Subreddit = function Subreddit(_ref) {
     subreddits.map(function (post, i) {
       return _react2.default.createElement(_Post2.default, {
         key: i,
-        title: post.title
+        name: post.name
       });
     })
   );
